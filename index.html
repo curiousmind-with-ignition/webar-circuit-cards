@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Circuit Cards AR</title>
+  <link rel="stylesheet" href="./style.css" />
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   <script src="./js/sim-components.js"></script>
@@ -21,7 +22,7 @@
     <a-entity id="target-0" mindar-image-target="targetIndex: 0">
       <a-plane position="0 -0.35 0.01" width="0.92" height="0.62" color="#0b1220" opacity="0.7"></a-plane>
       <a-text value="V = I x R" position="0 -0.12 0.02" width="0.85" align="center" color="#f59e0b"></a-text>
-      <a-entity id="res-sim" position="0 -0.36 0.02"></a-entity>
+      <a-entity id="res-sim" sim-resistor position="0 -0.36 0.02"></a-entity>
       <a-text id="res-status" value="Opposes current" position="0 -0.58 0.02" width="0.85" align="center" color="#ffffff"></a-text>
     </a-entity>
 
@@ -30,14 +31,14 @@
       <a-plane position="0 -0.35 0.01" width="0.92" height="0.62" color="#0b1220" opacity="0.7"></a-plane>
       <a-text value="Q = C x V    tau = R x C" position="0 -0.12 0.02" width="0.85" align="center" color="#3b82f6"></a-text>
       <a-entity id="cap-sim" sim-capacitor position="0 -0.36 0.02"></a-entity>
-      <a-text id="cap-status" value="Waiting..." position="0 -0.58 0.02" width="0.85" align="center" color="#ffffff"></a-text>
+      <a-text id="cap-status" value="Stores charge" position="0 -0.58 0.02" width="0.85" align="center" color="#ffffff"></a-text>
     </a-entity>
 
     <!-- 2: Inductor -->
     <a-entity id="target-2" mindar-image-target="targetIndex: 2">
       <a-plane position="0 -0.35 0.01" width="0.92" height="0.62" color="#0b1220" opacity="0.7"></a-plane>
-      <a-text value="V = L x di/dt" position="0 -0.12 0.02" width="0.85" align="center" color="#22c55e"></a-text>
-      <a-entity id="ind-sim" position="0 -0.36 0.02"></a-entity>
+      <a-text value="V = L x di/dt    tau = L / R" position="0 -0.12 0.02" width="0.85" align="center" color="#22c55e"></a-text>
+      <a-entity id="ind-sim" sim-inductor position="0 -0.36 0.02"></a-entity>
       <a-text id="ind-status" value="Resists sudden change" position="0 -0.58 0.02" width="0.85" align="center" color="#ffffff"></a-text>
     </a-entity>
 
@@ -45,10 +46,32 @@
     <a-entity id="target-3" mindar-image-target="targetIndex: 3">
       <a-plane position="0 -0.35 0.01" width="0.92" height="0.62" color="#0b1220" opacity="0.7"></a-plane>
       <a-text value="Current flows one way" position="0 -0.12 0.02" width="0.85" align="center" color="#a855f7"></a-text>
-      <a-entity id="dio-sim" position="0 -0.36 0.02"></a-entity>
+      <a-entity id="dio-sim" sim-diode position="0 -0.36 0.02"></a-entity>
       <a-text id="dio-status" value="One-way gate" position="0 -0.58 0.02" width="0.85" align="center" color="#ffffff"></a-text>
     </a-entity>
   </a-scene>
+
+  <!-- Page overlay: hint and buttons (normal HTML, so real symbols are fine) -->
+  <div id="hint">Point at a card</div>
+
+  <div id="controls">
+    <div class="btn-group" id="btns-0" style="--accent:#f59e0b; --ink:#0b1220">
+      <button data-sim="#res-sim" data-comp="sim-resistor" data-mode="r-down">R −</button>
+      <button data-sim="#res-sim" data-comp="sim-resistor" data-mode="r-up">R +</button>
+    </div>
+    <div class="btn-group" id="btns-1" style="--accent:#3b82f6; --ink:#ffffff">
+      <button data-sim="#cap-sim" data-comp="sim-capacitor" data-mode="charge">Charge</button>
+      <button data-sim="#cap-sim" data-comp="sim-capacitor" data-mode="discharge">Discharge</button>
+    </div>
+    <div class="btn-group" id="btns-2" style="--accent:#22c55e; --ink:#0b1220">
+      <button data-sim="#ind-sim" data-comp="sim-inductor" data-mode="on">Switch ON</button>
+      <button data-sim="#ind-sim" data-comp="sim-inductor" data-mode="off">Switch OFF</button>
+    </div>
+    <div class="btn-group" id="btns-3" style="--accent:#a855f7; --ink:#ffffff">
+      <button data-sim="#dio-sim" data-comp="sim-diode" data-mode="forward">Forward</button>
+      <button data-sim="#dio-sim" data-comp="sim-diode" data-mode="reverse">Reverse</button>
+    </div>
+  </div>
 
   <script src="./js/app.js"></script>
 </body>
