@@ -1,3 +1,4 @@
+// Wait until the scene has loaded, then connect card events to the simulations
 var scene = document.querySelector('a-scene');
 
 function setup() {
