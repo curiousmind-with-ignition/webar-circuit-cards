@@ -18,46 +18,35 @@
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
     <!-- 0: Resistor -->
-    <a-entity mindar-image-target="targetIndex: 0">
-      <a-plane position="0 -0.35 0.01" width="0.92" height="0.62"
-               color="#0b1220" opacity="0.7"></a-plane>
-      <a-text value="V = I x R" position="0 -0.2 0.02" align="center"
-              width="1.6" color="#f59e0b"></a-text>
-      <a-text value="Opposes current" position="0 -0.36 0.02" align="center"
-              width="1.1" color="#ffffff"></a-text>
+    <a-entity id="target-0" mindar-image-target="targetIndex: 0">
+      <a-plane position="0 -0.35 0.01" width="0.92" height="0.62" color="#0b1220" opacity="0.7"></a-plane>
+      <a-text value="V = I x R" position="0 -0.12 0.02" width="0.85" align="center" color="#f59e0b"></a-text>
+      <a-entity id="res-sim" position="0 -0.36 0.02"></a-entity>
+      <a-text id="res-status" value="Opposes current" position="0 -0.58 0.02" width="0.85" align="center" color="#ffffff"></a-text>
     </a-entity>
 
     <!-- 1: Capacitor -->
-    <a-entity mindar-image-target="targetIndex: 1">
-      <a-plane position="0 -0.35 0.01" width="0.92" height="0.62"
-               color="#0b1220" opacity="0.7"></a-plane>
-      <a-text value="Q = C x V" position="0 -0.09 0.02" align="center"
-              width="1.6" color="#60a5fa"></a-text>
-      <a-text value="tau = R x C" position="0 -0.17 0.02" align="center"
-              width="1.1" color="#ffffff"></a-text>
+    <a-entity id="target-1" mindar-image-target="targetIndex: 1">
+      <a-plane position="0 -0.35 0.01" width="0.92" height="0.62" color="#0b1220" opacity="0.7"></a-plane>
+      <a-text value="Q = C x V    tau = R x C" position="0 -0.12 0.02" width="0.85" align="center" color="#3b82f6"></a-text>
       <a-entity id="cap-sim" sim-capacitor position="0 -0.36 0.02"></a-entity>
-      <a-text id="cap-status" value="" position="0 -0.58 0.02" align="center"
-              width="0.85" color="#ffffff"></a-text>
+      <a-text id="cap-status" value="Waiting..." position="0 -0.58 0.02" width="0.85" align="center" color="#ffffff"></a-text>
     </a-entity>
 
     <!-- 2: Inductor -->
-    <a-entity mindar-image-target="targetIndex: 2">
-      <a-plane position="0 -0.35 0.01" width="0.92" height="0.62"
-               color="#0b1220" opacity="0.7"></a-plane>
-      <a-text value="V = L x di/dt" position="0 -0.2 0.02" align="center"
-              width="1.6" color="#22c55e"></a-text>
-      <a-text value="tau = L / R" position="0 -0.36 0.02" align="center"
-              width="1.1" color="#ffffff"></a-text>
+    <a-entity id="target-2" mindar-image-target="targetIndex: 2">
+      <a-plane position="0 -0.35 0.01" width="0.92" height="0.62" color="#0b1220" opacity="0.7"></a-plane>
+      <a-text value="V = L x di/dt" position="0 -0.12 0.02" width="0.85" align="center" color="#22c55e"></a-text>
+      <a-entity id="ind-sim" position="0 -0.36 0.02"></a-entity>
+      <a-text id="ind-status" value="Resists sudden change" position="0 -0.58 0.02" width="0.85" align="center" color="#ffffff"></a-text>
     </a-entity>
 
     <!-- 3: Diode -->
-    <a-entity mindar-image-target="targetIndex: 3">
-      <a-plane position="0 -0.35 0.01" width="0.92" height="0.62"
-               color="#0b1220" opacity="0.7"></a-plane>
-      <a-text value="One-way current" position="0 -0.2 0.02" align="center"
-              width="1.6" color="#a855f7"></a-text>
-      <a-text value="Current flows one way" position="0 -0.36 0.02" align="center"
-              width="1.1" color="#ffffff"></a-text>
+    <a-entity id="target-3" mindar-image-target="targetIndex: 3">
+      <a-plane position="0 -0.35 0.01" width="0.92" height="0.62" color="#0b1220" opacity="0.7"></a-plane>
+      <a-text value="Current flows one way" position="0 -0.12 0.02" width="0.85" align="center" color="#a855f7"></a-text>
+      <a-entity id="dio-sim" position="0 -0.36 0.02"></a-entity>
+      <a-text id="dio-status" value="One-way gate" position="0 -0.58 0.02" width="0.85" align="center" color="#ffffff"></a-text>
     </a-entity>
   </a-scene>
 
