@@ -6,6 +6,7 @@
   <title>Circuit Cards AR</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  <script src="./js/sim-components.js"></script>
 </head>
 <body>
   <a-scene
@@ -30,10 +31,13 @@
     <a-entity mindar-image-target="targetIndex: 1">
       <a-plane position="0 -0.35 0.01" width="0.92" height="0.62"
                color="#0b1220" opacity="0.7"></a-plane>
-      <a-text value="Q = C x V" position="0 -0.2 0.02" align="center"
-              width="1.6" color="#3b82f6"></a-text>
-      <a-text value="tau = R x C" position="0 -0.36 0.02" align="center"
+      <a-text value="Q = C x V" position="0 -0.09 0.02" align="center"
+              width="1.6" color="#60a5fa"></a-text>
+      <a-text value="tau = R x C" position="0 -0.17 0.02" align="center"
               width="1.1" color="#ffffff"></a-text>
+      <a-entity id="cap-sim" sim-capacitor position="0 -0.36 0.02"></a-entity>
+      <a-text id="cap-status" value="" position="0 -0.58 0.02" align="center"
+              width="0.85" color="#ffffff"></a-text>
     </a-entity>
 
     <!-- 2: Inductor -->
@@ -56,5 +60,7 @@
               width="1.1" color="#ffffff"></a-text>
     </a-entity>
   </a-scene>
+
+  <script src="./js/app.js"></script>
 </body>
 </html>
